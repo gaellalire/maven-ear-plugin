@@ -168,6 +168,9 @@
       <version>4.12 </version>
       <scope>test</scope>
     </dependency>
+    <!--
+     ! New maven-it-extension including dependencies needed to write IT tests.
+     -->
     <dependency>
       <groupId>org.apache.maven.jupiter.extension</groupId>
       <artifactId>maven-it-extension</artifactId>
@@ -237,6 +240,9 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <!--
+       ! Currently based on animal-sniffer of new packages;
+       -->
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
         <configuration>
@@ -300,6 +306,11 @@
               </extraArtifacts>
             </configuration>
             <executions>
+              <!--
+               ! !!Hack!!
+               ! Currently needed to turn off running integration-test part
+               ! and keep only install goal of maven-invoker-plugin.
+               -->
               <execution>
                 <id>integration-test</id>
                 <phase>EMPTY</phase>
@@ -314,6 +325,10 @@
                   <goal>install</goal>
                 </goals>
                 <configuration>
+                  <!--
+                   ! !!Hack!!
+                   ! This location is currently hard coded within the maven-it-extension
+                   -->
                   <localRepositoryPath>${project.build.directory}/invoker-repo</localRepositoryPath>
                 </configuration>
               </execution>
