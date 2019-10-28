@@ -188,8 +188,11 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
-
-
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -343,6 +346,9 @@
               <includes>
                 <include>**/*IT.java</include>
               </includes>
+              <systemProperties>
+                <maven.version>${maven.version}</maven.version>
+              </systemProperties>
             </configuration>
             <executions>
               <execution>
